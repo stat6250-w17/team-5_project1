@@ -2,4 +2,6 @@
 
 Team Nickname: The SASketeers
 
-Team Memebers: Bhawna Panwar, Mayuri Firodiya, Rupinder Kaur
+Team Members: Bhawna Panwar, Mayuri Firodiya, Rupinder Kaur
+
+Dataset: Hospital General Information
