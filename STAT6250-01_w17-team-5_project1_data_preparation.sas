@@ -30,3 +30,35 @@ Data Dictionary: worksheet "Data Field Descriptions" in file HospInfo-edited.xls
 Unique ID: The columns Provider_ID serves as the Primary key.
 It has unique ID for each hospital.
 ;
+
+* setup environmental parameters;
+%let inputDatasetURL =
+https://github.com/stat6250/team-5_project1/blob/master/HospInfo-edited.xlsx
+;
+
+*load raw Hospital Dataset over the wire;
+filename HOSPtemp TEMP;
+proc http
+    method="get"
+	url="&inputDatasetURL."
+	out=HOSPtemp
+	;
+run;
+
+*The file refers to the path of the file on the local system because
+proc import gives error on importing .xlsx files using filename directly.
+It works fine on importing .xls and .csv files;
+proc import
+    file='C:\Users\hu4883\HospInfo-edited.xlsx'
+	out=Hosp_raw
+	dbms=xlsx
+	replace;
+	;
+run;
+
+filename HOSPtemp clear;
+
+* check raw Hospital dataset for duplicates with respect to its Primary key;
+proc sort nodupkey data=Hosp_raw dupout=Hosp_raw_dups out=_null_;
+    by Provider_ID;
+run;
