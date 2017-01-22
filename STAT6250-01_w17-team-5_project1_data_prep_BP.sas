@@ -61,6 +61,7 @@ data HospInfo_analytic_file;
         Hospital_Ownership
         Timeliness_of_care_national_comp
         Readmission_national_comparison
+        Hospital_overall_rating
     ;
     keep
         Mortality_national_comparison
@@ -68,6 +69,7 @@ data HospInfo_analytic_file;
         Hospital_Ownership
         Timeliness_of_care_national_comp
         Readmission_national_comparison
+        Hospital_overall_rating
     ;
     set Hosp_raw;
 run;
