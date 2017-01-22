@@ -1,4 +1,4 @@
-%let dataPrepFileName = STAT6250-01_w17-team-5_project1_data_prep_BP.sas;
+%let dataPrepFileName = STAT6250-01_w17-team-5_project1_data_preparation.sas;
 %let sasUEFilePrefix = .;
 
 * load external file that generates analytic dataset HospInfo_analytic_file
