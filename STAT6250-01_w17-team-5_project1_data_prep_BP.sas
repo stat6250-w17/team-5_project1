@@ -66,6 +66,7 @@ data HospInfo_analytic_file;
         Patient_experience_national_comp
         Efficient_use_of_medical_imaging
         Hospital_Type
+        State
     ;
     keep
         Mortality_national_comparison
@@ -78,6 +79,7 @@ data HospInfo_analytic_file;
         Patient_experience_national_comp
         Efficient_use_of_medical_imaging
         Hospital_Type
+        State
     ;
     set Hosp_raw;
 run;
