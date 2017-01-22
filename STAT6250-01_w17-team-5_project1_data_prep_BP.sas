@@ -62,6 +62,10 @@ data HospInfo_analytic_file;
         Timeliness_of_care_national_comp
         Readmission_national_comparison
         Hospital_overall_rating
+        Emergency_Services
+        Patient_experience_national_comp
+        Efficient_use_of_medical_imaging
+        Hospital_Type
     ;
     keep
         Mortality_national_comparison
@@ -70,6 +74,10 @@ data HospInfo_analytic_file;
         Timeliness_of_care_national_comp
         Readmission_national_comparison
         Hospital_overall_rating
+        Emergency_Services
+        Patient_experience_national_comp
+        Efficient_use_of_medical_imaging
+        Hospital_Type
     ;
     set Hosp_raw;
 run;
