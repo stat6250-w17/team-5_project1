@@ -29,7 +29,7 @@ It has unique ID for each hospital.
 http://filebin.ca/39gOt3ZfiNuv/HospInfo-edited.xls
 ;
 
-* load raw FRPM dataset over the wire;
+* load raw HospInfo dataset over the wire;
 filename HOSPtemp TEMP;
 proc http
     method="get" 
@@ -46,7 +46,7 @@ proc import
 run;
 filename HOSPtemp clear;
 
-* check raw FRPM dataset for duplicates with respect to its composite key;
+* check raw HospInfo dataset for duplicates with respect to its composite key;
 proc sort nodupkey data=Hosp_raw dupout=Hosp_raw_dups out=_null_;
     by Provider_ID;
 run;
