@@ -28,6 +28,14 @@ title2
 By analyzing the Hospital Owvership by the Emergency services we can determine the the avalability structure of Emergency services
 in Government hospitals compared to Non-profit compared to Proprietary."
 ;
+footnote1
+"Observation 1: The results show that 93.86% of hospitals are equppied with Emergency services and out of the the
+Non-profit private hospitals have a larger share of 40.21% hospitals with Emergency services"
+;
+footnote2
+"Observation 2: Similarly the output also shows that 6.14% of hospaitals are not equipped with Emergency services and out of that
+Non-profit pivate hospiatls have a larger share of 2.16%. The government and tribal hospitals have a fair number of 
+hospitals with emergency services (based on the total number of hospitals in the respective sector."
 *
 Methodology: 
 PROC freq is a descriptive as well as statistical procedue. It describes data by reporting the
@@ -48,6 +56,13 @@ title2
 It can be analyzed from the results what is the pateint experince for the best rated hospital and the worst rated hospital.
 The rating 5 is the best and rating 1 is the worst."
 ;
+footnote1
+"Observation 1: The hospitals with Pateint experience above national average have more number of 4* and 5* rated hospitals."
+;
+footnote2
+"Observation 2: The hospitals with Pateint experience same as national average have more number of 2* and 3* rated hospitals
+The hospitals with Patient experince below national average have more number of 1* 2* and 3* rated hospitals."
+
 *
 Methodology:
 PROC freq is a descriptive as well as statistical procedue. It describes data by reporting the
@@ -67,6 +82,11 @@ title2
 "Rationale: The efficient use of medical imaging can be compared with the hospital ownership. This analysis will help understand
 the efficiency of medical imaging systems with respect to Governemnt, non-profit, propreitary hospitals."
 ;
+footnote1
+"Observation 1: There are higher number of Non-profit private hospitals in each rating category of efficiency of medical imaging systems"
+;
+footnote2
+"Observation 2: Distribution of effiency of medical imaging systems has no correlation with hospital ownership. There may be other factors that should be evalauted for effectiveness of imaging systems."
 *
 Methodology:
 PROC freq is a descriptive as well as statistical procedue. It describes data by reporting the
