@@ -28,7 +28,13 @@ title2
 with high ratings and which States have low rated hospitals. We can then analyze the health
 of the patients based on this data."
 ;
-
+footnote1
+"Observation 1: From the above output, We can clearly observe that 8 States in the US have no 4* or 5* hospitals."
+;
+footnote2
+"Observation 2: Also, most of the states have more 2* and 3* rated hospitals and few highly rated which indicates 
+the need of better health care centers in the country"
+;
 /*
 Methodology: PROC FREQ provides a descriptive view of the data which makes it easy to analyze.
 It describes the data by reporting the values of distribution variables. This procedure
@@ -49,7 +55,14 @@ title2
 This data will give an insight whether care provided on time make any difference in the rating
 of the hospital."
 ;
-
+footnote1
+"Observation 1 : From the results it can be analyzed that the timeliness of care does not impact the hospital
+rating to a large extent. Maximum number of hospitals whose care time is above or same as National
+average lie under 3* and 4* rating."
+;
+footnote2
+"Observation 2 : This eventually means that there are other factors that contribute to the rating of a hospital."
+;
 /*
 Methodology: PROC FREQ provides a descriptive view of the data which makes it easy to analyze.
 It describes the data by reporting the values of distribution variables. This procedure
@@ -76,7 +89,14 @@ title2
 Hospitals who do not provide emergency services to the patients who come there n a critical condition,
 can be the reason of higher mortality rates."
 ;
-
+footnote1
+"Observation 1 : Around 93% of the hospitals in the country provide Emegency Services to the patients. "
+;
+footnote2
+"Observation 2 : 55% of the emergency service providing hospitals have the mortality rate same as the national average.
+Mortality rate is lower for only 7% of the hospitals with ES. Hence, we can say that Mortality rate
+in the nation is not dependent on the facility of Emergency Services."
+;
 /*
 Methodology: PROC FREQ provides a descriptive view of the data which makes it easy to analyze.
 It describes the data by reporting the values of distribution variables. This procedure
@@ -87,3 +107,4 @@ to understand
 proc freq data=HospInfo_analytic_file;
 	Table Emergency_Services*Mortality_national_comparison;
 run;
+
