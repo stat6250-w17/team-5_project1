@@ -41,15 +41,25 @@ proc import
     file=HOSPtemp
     out=Hosp_raw
     dbms=xls
-    replace
     ;
 run;
 filename HOSPtemp clear;
 
+
+
 * check raw HospInfo dataset for duplicates with respect to its composite key;
-proc sort nodupkey data=Hosp_raw dupout=Hosp_raw_dups out=_null_;
-    by Provider_ID;
+proc sort 
+        nodupkey 
+        data=Hosp_raw 
+        dupout=Hosp_raw_dups 
+        out=_null_
+    ;
+    by 
+        Provider_ID
+    ;
 run;
+
+
 
 * build analytic dataset from HOSP dataset with the least number of columns and
 minimal cleaning/transformation needed to address research questions in
