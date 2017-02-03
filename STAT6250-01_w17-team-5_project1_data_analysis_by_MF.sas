@@ -47,6 +47,9 @@ for each combination of variable values.
 proc freq data=HospInfo_analytic_file;
 	Table Emergency_Services*Hospital_Ownership;
 run;
+title;
+footnote;
+
 
 title1
 "Research Question: What is the distribution of Patient Experinece based on the Hospital Overall Rating?"
@@ -74,6 +77,9 @@ for each combination of variable values.
 proc freq data=HospInfo_analytic_file;
   Table Patient_experience_national_comp*Hospital_overall_rating;
 run;
+title;
+footnote;
+
 
 title1
 "Research Question: What is the distribution of Efficient use of medical imaging systems?"
@@ -97,3 +103,5 @@ for each combination of variable values.
 proc freq data=HospInfo_analytic_file; 
   Table Efficient_use_of_medical_imaging*Hospital_Ownership;
 run;
+title;
+footnote;
