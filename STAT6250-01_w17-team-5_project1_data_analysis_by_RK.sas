@@ -20,11 +20,16 @@ relative file import path to the current directory, if using Windows;
 %mend;
 %setup;
 
-/* 
-Research Question 1. What is the distribution of Hospital overall ratings in the State?
-Rationale: This analysis will give the view of the States that have more hospitals
+title1
+"Research Question 1. What is the distribution of Hospital overall ratings in the State?"
+;
+title2
+"Rationale: This analysis will give the view of the States that have more hospitals
 with high ratings and which States have low rated hospitals. We can then analyze the health
-of the patients based on this data.
+of the patients based on this data."
+;
+
+/*
 Methodology: PROC FREQ provides a descriptive view of the data which makes it easy to analyze.
 It describes the data by reporting the values of distribution variables. This procedure
 combines values from various columns and present them in a tabular form which makes it clear 
@@ -36,11 +41,16 @@ proc freq data=HospInfo_analytic_file;
 run;
 
 
-/*
-Research Question 2. How does timely care in a Hospital affect its rating?
-Rationale: Patients usually look for hospitals where they dont have to wait too much in line.
+title1
+"Research Question 2. How does timely care in a Hospital affect its rating?"
+;
+title2
+"Rationale: Patients usually look for hospitals where they dont have to wait too much in line.
 This data will give an insight whether care provided on time make any difference in the rating
-of the hospital.
+of the hospital."
+;
+
+/*
 Methodology: PROC FREQ provides a descriptive view of the data which makes it easy to analyze.
 It describes the data by reporting the values of distribution variables. This procedure
 combines values from various columns and present them in a tabular form which makes it clear 
@@ -58,11 +68,16 @@ run;
 */
 
 
-/*
-Research Question 3. Does the Mortality rate rise in absence of Emergency services in a hospital?
-Rationale: The presence of Emergency services can make a huge difference in the death rates.
+title1
+"Research Question 3. Does the Mortality rate rise in absence of Emergency services in a hospital?"
+;
+title2
+"Rationale: The presence of Emergency services can make a huge difference in the death rates.
 Hospitals who do not provide emergency services to the patients who come there n a critical condition,
-can be the reason of higher mortality rates.
+can be the reason of higher mortality rates."
+;
+
+/*
 Methodology: PROC FREQ provides a descriptive view of the data which makes it easy to analyze.
 It describes the data by reporting the values of distribution variables. This procedure
 combines values from various columns and present them in a tabular form which makes it clear 
@@ -72,7 +87,3 @@ to understand
 proc freq data=HospInfo_analytic_file;
 	Table Emergency_Services*Mortality_national_comparison;
 run;
-
-
-
-
