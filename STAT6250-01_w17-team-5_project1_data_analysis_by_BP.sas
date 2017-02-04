@@ -1,4 +1,3 @@
-
 %let dataPrepFileName = STAT6250-01_w17-team-5_project1_data_prep_BP.sas;
 %let sasUEFilePrefix = .;
 
@@ -32,13 +31,14 @@ across the various Hospital."
 ;
 
 footnote1
-"Further analysis to look for.... "
+"Observation:Further analysis indicates 8.3% Above Average and 56% same as National Average"
 ;
-
+*/
 Methodology: The FREQ procedure was used since it is the most descriptive statistical procedure.
 Used proc freq to cross-tabulate bins.
-*/
-          
+;
+
+           
 proc freq data=HospInfo_analytic_file;
 	Table Mortality_national_comparison*Hospital_Ownership;
 run;
@@ -52,14 +52,16 @@ title1
 title2
 "Rationale: Hospital ownership may contribute how quickly patients are treated."
 ;
-
 footnote1
-"By comparing hospital ownership with patient timeliness of care provides which hosptial are the best."
+"Observation 1: By comparing hospital ownership with patient timeliness of care provides which hosptial are the best."
 ;
-
+footnote2
+"Observation 2: Further analysis indicates 22% Above Average and 33% same as National Average"
+;
+*/
 Methodology: The FREQ procedure was used since it is the most descriptive statistical procedure.
 Used proc freq to cross-tabulate bins.
-
+;
 proc freq data=HospInfo_analytic_file;
 	Table Timeliness_of_care_national_comp*Hospital_Ownership;
 run;
@@ -73,17 +75,18 @@ title2
 "Rationale: If hospital rating is lower, do lots of patient return. "
 ;
 footnote1
-"For hospital overall rating, 5 is considered to be best and 1 is the worst."
+"Observation 1: For hospital overall rating, 5 is considered to be best and 1 is the worst."
 ;
 footnote2
-"Data must show best rated hospital have less readmission."
+"Observation 2:Data shows best rated hospital have less readmission(1.7%)."
 ;
+*/
 Methodology: The FREQ procedure was used since it is the most descriptive statistical procedure.
 Used proc freq to cross-tabulate bins.
-
+;
 
 proc freq data=HospInfo_analytic_file;
 	Table Readmission_national_comparison*Hospital_overall_rating;
 run;
-
-
+title;
+footnote;
