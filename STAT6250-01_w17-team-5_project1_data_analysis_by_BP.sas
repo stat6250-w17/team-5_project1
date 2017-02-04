@@ -42,7 +42,8 @@ Used proc freq to cross-tabulate bins.
 proc freq data=HospInfo_analytic_file;
 	Table Mortality_national_comparison*Hospital_Ownership;
 run;
-
+title;
+footnote;
 
 
 title1
@@ -65,7 +66,8 @@ Used proc freq to cross-tabulate bins.
 proc freq data=HospInfo_analytic_file;
 	Table Timeliness_of_care_national_comp*Hospital_Ownership;
 run;
-
+title;
+footnote;
 
 title1
 "Research Question: What is the distribution for the Hospital rating and Readmission?"
