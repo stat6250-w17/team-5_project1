@@ -1,4 +1,18 @@
 
+*******************************************************************************;
+**************** 80-character banner for column width reference ***************;
+* (set window width to banner width to calibrate line length to 80 characters *;
+*******************************************************************************;
+
+*
+This file uses the following analytic dataset to address several research
+questions regarding Hospital quality and services.
+Dataset Name: HospInfo_analytic_file created in external file
+STAT6250-01_w17-team-5_project1_data_preparation.sas, which is assumed to be
+in the same directory as this file
+See included file for dataset properties
+;
+
 * environmental setup;
 
 %let dataPrepFileName = STAT6250-01_w17-team-5_project1_data_preparation.sas;
@@ -84,3 +98,29 @@ footnote;
 
 
 
+title1
+"Research Question 3. Does the Mortality rate rise in absence of Emergency services in a hospital?"
+;
+title2
+"Rationale: The presence of Emergency services can make a huge difference in the death rates. Hospitals who do not provide emergency services to the patients who come there n a critical condition, can be the reason of higher mortality rates."
+;
+footnote1
+"Observation 1 : Around 93% of the hospitals in the country provide Emegency Services to the patients. "
+;
+footnote2
+"Observation 2 : 55% of the emergency service providing hospitals have the mortality rate same as the national average. Mortality rate is lower for only 7% of the hospitals with ES. Hence, we can say that Mortality rate in the nation is not dependent on the facility of Emergency Services."
+;
+/*
+Methodology: PROC FREQ provides a descriptive view of the data which makes it easy to analyze.
+It describes the data by reporting the values of distribution variables. This procedure
+combines values from various columns and present them in a tabular form which makes it clear 
+to understand
+*/
+
+proc freq 
+	data=HospInfo_analytic_file;
+	Table 
+	    Emergency_Services*Mortality_national_comparison;
+run;
+title;
+footnote;
