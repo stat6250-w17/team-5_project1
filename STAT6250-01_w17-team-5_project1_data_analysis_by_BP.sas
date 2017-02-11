@@ -15,7 +15,7 @@ See included file for dataset properties
 ;
 
 * environmental setup;
-
+*IL: please include the team's data-prep file;
 %let dataPrepFileName = STAT6250-01_w17-team-5_project1_data_prep_BP.sas;
 %let sasUEFilePrefix = .;
 
@@ -25,16 +25,16 @@ relative file import path to the current directory, if using Windows;
 
 %macro setup;
 %if
-	&SYSSCP. = WIN
+    &SYSSCP. = WIN
 %then
-	%do;
-		X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";			
-		%include ".\&dataPrepFileName.";
-	%end;
+    %do;
+        X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";           
+        %include ".\&dataPrepFileName.";
+    %end;
 %else
-	%do;
-		%include "~/&sasUEFilePrefix./&dataPrepFileName.";
-	%end;
+    %do;
+        %include "~/&sasUEFilePrefix./&dataPrepFileName.";
+    %end;
 %mend;
 %setup;
 
@@ -42,15 +42,15 @@ relative file import path to the current directory, if using Windows;
 title1
 "Research Question: What is the mortality rate based on Hospital ownership?"
 ;
-
+* IL: don't line-wrap string literals;
 title2
-"Rationale: ownership might impact quality of care. private vs. government. By combining Hospital Ownership and Mortality_national_comparison, we can see quality care breakdown
-across the various Hospital."
+"Rationale: ownership might impact quality of care. private vs. government. By combining Hospital Ownership and Mortality_national_comparison, we can see quality care breakdown across the various Hospital."
 ;
 
 footnote1
 "Observation:Further analysis indicates 8.3% Above Average and 56% same as National Average"
 ;
+* IL: wrap comments at 80 characters;
 */
 Methodology: The FREQ procedure was used since it is the most descriptive statistical procedure.
 Used proc freq to cross-tabulate bins.
@@ -58,7 +58,7 @@ Used proc freq to cross-tabulate bins.
 
            
 proc freq data=HospInfo_analytic_file;
-	Table Mortality_national_comparison*Hospital_Ownership;
+    Table Mortality_national_comparison*Hospital_Ownership;
 run;
 title;
 footnote;
@@ -82,7 +82,7 @@ Methodology: The FREQ procedure was used since it is the most descriptive statis
 Used proc freq to cross-tabulate bins.
 ;
 proc freq data=HospInfo_analytic_file;
-	Table Timeliness_of_care_national_comp*Hospital_Ownership;
+    Table Timeliness_of_care_national_comp*Hospital_Ownership;
 run;
 title;
 footnote;
@@ -106,7 +106,7 @@ Used proc freq to cross-tabulate bins.
 ;
 
 proc freq data=HospInfo_analytic_file;
-	Table Readmission_national_comparison*Hospital_overall_rating;
+    Table Readmission_national_comparison*Hospital_overall_rating;
 run;
 title;
 footnote;

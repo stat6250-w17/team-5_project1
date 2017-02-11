@@ -3,13 +3,15 @@
 **************** 80-character banner for column width reference ***************;
 * (set window width to banner width to calibrate line length to 80 characters *;
 *******************************************************************************;
-
+*IL: use line breaks to separate paragraphs in comments;
 *
 This file uses the following analytic dataset to address several research
 questions regarding Hospital quality and services.
+
 Dataset Name: HospInfo_analytic_file created in external file
 STAT6250-01_w17-team-5_project1_data_preparation.sas, which is assumed to be
 in the same directory as this file
+
 See included file for dataset properties
 ;
 
@@ -24,18 +26,18 @@ relative file import path to the current directory, if using Windows;
 
 %macro setup;
 %if
-	&SYSSCP. = WIN
+    &SYSSCP. = WIN
 %then
-	%do;
-		X 
-		"cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))"""
-		;			
-		%include ".\&dataPrepFileName.";
-	%end;
+    %do;
+        X 
+        "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))"""
+        ;           
+        %include ".\&dataPrepFileName.";
+    %end;
 %else
-	%do;
-		%include "~/&sasUEFilePrefix./&dataPrepFileName.";
-	%end;
+    %do;
+        %include "~/&sasUEFilePrefix./&dataPrepFileName.";
+    %end;
 %mend;
 %setup;
 
@@ -52,17 +54,19 @@ footnote1
 footnote2
 "Observation 2: Also, most of the states have more 2* and 3* rated hospitals and few highly rated which indicates the need of better health care centers in the country"
 ;
+*IL: wrapping comments at 80 characters;
 /*
 Methodology: PROC FREQ provides a descriptive view of the data which makes it easy to analyze.
 It describes the data by reporting the values of distribution variables. This procedure
 combines values from various columns and present them in a tabular form which makes it clear 
 to understand.
 */
-
+*IL: be consistent with capitalization;
 proc freq 
-	data=HospInfo_analytic_file;
-	Table 
-	    State*Hospital_overall_rating;
+    data=HospInfo_analytic_file;
+    * IL: use norow nocol nopercent options to suppress percentages;
+    Table 
+        State*Hospital_overall_rating / norow nocol nopercent;
 run;
 title;
 footnote;
@@ -89,9 +93,9 @@ to understand.
 */
 
 proc freq 
-	data=HospInfo_analytic_file;
-	Table 
-	    Hospital_overall_rating*Timeliness_of_care_national_comp;
+    data=HospInfo_analytic_file;
+    Table 
+        Hospital_overall_rating*Timeliness_of_care_national_comp;
 run;
 title;
 footnote;
@@ -118,9 +122,9 @@ to understand
 */
 
 proc freq 
-	data=HospInfo_analytic_file;
-	Table 
-	    Emergency_Services*Mortality_national_comparison;
+    data=HospInfo_analytic_file;
+    Table 
+        Emergency_Services*Mortality_national_comparison;
 run;
 title;
 footnote;

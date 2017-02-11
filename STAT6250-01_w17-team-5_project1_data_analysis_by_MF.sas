@@ -10,6 +10,7 @@ questions regarding Hospital quality and services.
 Dataset Name: HospInfo_analytic_file created in external file
 STAT6250-01_w17-team-5_project1_data_preparation.sas, which is assumed to be
 in the same directory as this file
+*IL: use a blank to separate paragraphs
 See included file for dataset properties
 ;
 
@@ -24,26 +25,24 @@ relative file import path to the current directory, if using Windows;
 
 %macro setup;
 %if
-	&SYSSCP. = WIN
+    &SYSSCP. = WIN
 %then
-	%do;
-		X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";			
-		%include ".\&dataPrepFileName.";
-	%end;
+    %do;
+        X "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget(SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";           
+        %include ".\&dataPrepFileName.";
+    %end;
 %else
-	%do;
-		%include "~/&sasUEFilePrefix./&dataPrepFileName.";
-	%end;
+    %do;
+        %include "~/&sasUEFilePrefix./&dataPrepFileName.";
+    %end;
 %mend;
 %setup;
-
+*IL: don't wrap string literals;
 title1
 "Research Question: What is the avalability of Emergency Services based on Hospital Ownership?"
 ;
 title2
-"Rationale: The Hospital Ownership is a factor that will impact the avalability of Emergency services.
-By analyzing the Hospital Owvership by the Emergency services we can determine the the avalability structure of Emergency services
-in Government hospitals compared to Non-profit compared to Proprietary."
+"Rationale: The Hospital Ownership is a factor that will impact the avalability of Emergency services. By analyzing the Hospital Owvership by the Emergency services we can determine the the avalability structure of Emergency services in Government hospitals compared to Non-profit compared to Proprietary."
 ;
 footnote1
 "Observation 1: The results show that 93.86% of hospitals are equppied with Emergency services and out of the the
@@ -52,7 +51,9 @@ Non-profit private hospitals have a larger share of 40.21% hospitals with Emerge
 footnote2
 "Observation 2: Similarly the output also shows that 6.14% of hospaitals are not equipped with Emergency services and out of that
 Non-profit pivate hospiatls have a larger share of 2.16%. The government and tribal hospitals have a fair number of 
-hospitals with emergency services (based on the total number of hospitals in the respective sector."
+hospitals with emergency services (based on the total number of hospitals in the respective sector.";
+*IL: be careful with missing semicolons;
+*IL: wrap comments at 80 characters;
 *
 Methodology: 
 PROC freq is a descriptive as well as statistical procedue. It describes data by reporting the
@@ -62,7 +63,7 @@ for each combination of variable values.
 ;
      
 proc freq data=HospInfo_analytic_file;
-	Table Emergency_Services*Hospital_Ownership;
+    Table Emergency_Services*Hospital_Ownership;
 run;
 title;
 footnote;
@@ -117,6 +118,9 @@ distribution of variable values. The FREQ procedure is used to create crosstabul
 that summarize data for two or more categorical variables and also show the number of observations
 for each combination of variable values.
 ;
+*IL: be consistent with capitalization;
+*IL: try using a format to bin columns in this analysis, to make the overall
+     trend easier to see;
 proc freq data=HospInfo_analytic_file; 
   Table Efficient_use_of_medical_imaging*Hospital_Ownership;
 run;
