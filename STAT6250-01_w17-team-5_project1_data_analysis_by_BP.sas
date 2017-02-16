@@ -16,7 +16,7 @@ See included file for dataset properties
 
 * environmental setup;
 
-%let dataPrepFileName = STAT6250-01_w17-team-5_project1_data_prep_BP.sas;
+%let dataPrepFileName = STAT6250-01_w17-team-5_project1_data_preparation.sas;
 %let sasUEFilePrefix = .;
 
 * load external file that generates analytic dataset HospInfo_analytic_file
@@ -44,7 +44,8 @@ title1
 ;
 
 title2
-"Rationale: ownership might impact quality of care. private vs. government. By combining Hospital Ownership and Mortality_national_comparison, we can see quality care breakdown
+"Rationale: ownership might impact quality of care. private vs. government. 
+By combining Hospital Ownership and Mortality_national_comparison, we can see quality care breakdown
 across the various Hospital."
 ;
 
@@ -58,7 +59,7 @@ Used proc freq to cross-tabulate bins.
 
            
 proc freq data=HospInfo_analytic_file;
-	Table Mortality_national_comparison*Hospital_Ownership;
+	table Mortality_national_comparison*Hospital_Ownership;
 run;
 title;
 footnote;
@@ -82,7 +83,7 @@ Methodology: The FREQ procedure was used since it is the most descriptive statis
 Used proc freq to cross-tabulate bins.
 ;
 proc freq data=HospInfo_analytic_file;
-	Table Timeliness_of_care_national_comp*Hospital_Ownership;
+	table Timeliness_of_care_national_comp*Hospital_Ownership;
 run;
 title;
 footnote;
@@ -106,7 +107,7 @@ Used proc freq to cross-tabulate bins.
 ;
 
 proc freq data=HospInfo_analytic_file;
-	Table Readmission_national_comparison*Hospital_overall_rating;
+	table Readmission_national_comparison*Hospital_overall_rating;
 run;
 title;
 footnote;
