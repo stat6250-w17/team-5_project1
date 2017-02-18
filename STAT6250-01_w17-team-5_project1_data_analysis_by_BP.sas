@@ -2,40 +2,40 @@
 **************** 80-character banner for column width reference ***************;
 * (set window width to banner width to calibrate line length to 80 characters *;
 *******************************************************************************;
-
+*IL: using line breaks in comment blocks to create paragraphs;
 *
 This file uses the following analytic dataset to address several research
 questions regarding Hospital quality and patient services.
+
 Dataset Name: HospInfo_analytic_file created in external file
 STAT6250-01_w17-team-5_project1_data_preparation.sas, which is assumed to be
 in the same directory as this file
+
 See included file for dataset properties
 ;
-
+*IL: avoid superfluous;
 * environmental setup;
-
 %let dataPrepFileName = STAT6250-01_w17-team-5_project1_data_preparation.sas;
 %let sasUEFilePrefix =team-5_project1;
 
 * load external file that generates analytic dataset HospInfo_analytic_file
 using a system path dependent on the host operating system, after setting the
 relative file import path to the current directory, if using Windows;
-
 %macro setup;
 %if
-	&SYSSCP. = WIN
+    &SYSSCP. = WIN
 %then
-	%do;
-		X 
-		"cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget
-		    (SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";
-		    
-		%include ".\&dataPrepFileName.";
-	%end;
+    %do;
+        X 
+        "cd ""%substr(%sysget(SAS_EXECFILEPATH),1,%eval(%length(%sysget
+            (SAS_EXECFILEPATH))-%length(%sysget(SAS_EXECFILENAME))))""";
+            
+        %include ".\&dataPrepFileName.";
+    %end;
 %else
-	%do;
-		%include "~/&sasUEFilePrefix./&dataPrepFileName.";
-	%end;
+    %do;
+        %include "~/&sasUEFilePrefix./&dataPrepFileName.";
+    %end;
 %mend;
 %setup;
 
@@ -44,17 +44,15 @@ relative file import path to the current directory, if using Windows;
 title1
 "Research Question: What is the mortality rate based on Hospital ownership?"
 ;
-
+*IL: don't wrap string literals;
 title2
-"Rationale: ownership might impact quality of care. private vs. government. 
-By combining Hospital Ownership and Mortality_national_comparison, we can see 
-quality care breakdown across the various Hospital."
+"Rationale: ownership might impact quality of care. private vs. government. By combining Hospital Ownership and Mortality_national_comparison, we can see quality care breakdown across the various Hospital."
 ;
 
 footnote1
 "Observation:Further analysis indicates that physician owned Hospital were 
-	25% Above Average in compare to 89% Local Government Same National 
-	as National Average"
+    25% Above Average in compare to 89% Local Government Same National 
+    as National Average"
 ;
 */
 Methodology: The FREQ procedure was used since it is the most descriptive 
@@ -67,7 +65,10 @@ data mortality;
 run;
            
 proc freq data=mortality;
-	table Mortality_national_comparison*Hospital_Ownership;
+    *IL: consider using options like norow nopercent;
+    table Mortality_national_comparison*Hospital_Ownership / norow nopercent;
+    *IL: consider using a where statement here instead of an extra data steps;
+    where Mortality_national_comparison ^= "Not Available";
 run;
 title;
 footnote;
@@ -102,7 +103,7 @@ data timeliness;
 run;
 
 proc freq data=timeliness;
-	table Timeliness_of_care_national_comp*Hospital_Ownership;
+    table Timeliness_of_care_national_comp*Hospital_Ownership;
 run;
 title;
 footnote;
@@ -141,18 +142,20 @@ data readmission;
     if Readmission_national_comparison ^= "Not Available";
     if Hospital_overall_rating ^= "Not Available";
 run;
-
+*IL: consider using a format to create more meaningul labels for layperson
+     audiences;
 proc freq data=readmission;
-	table Readmission_national_comparison*Hospital_overall_rating;
+    table Readmission_national_comparison*Hospital_overall_rating;
 run;
 ;   
 title;
 footnote;
 /* Create Mortality_national_comparison chart
 */ 
- 
+*IL: consider using proc sgplot instead of proc chart or proc gchart;
+*IL: also consider using proc iml to include R code for ggplot2 inside SAS;
 proc chart data=timeliness;
-	vbar Mortality_national_comparison;
+    vbar Mortality_national_comparison;
 run;
 quit;
 
@@ -160,14 +163,14 @@ quit;
 */ 
   
 proc chart data=timeliness;
-	vbar Timeliness_of_care_national_comp;
+    vbar Timeliness_of_care_national_comp;
 run;
 quit;
 
 /* Create Basic Readmission_national_comparison chart
 */
 proc chart data=readmission;
-	vbar Readmission_national_comparison;
+    vbar Readmission_national_comparison;
 run;
 quit;
 
